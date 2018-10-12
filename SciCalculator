@@ -1,0 +1,130 @@
+import java.util.Scanner;
+
+import static java.lang.Math.log10;
+import static java.lang.Math.pow;
+
+public class SciCalculator
+{
+    public static void main(String[] args)
+    {
+        Scanner myScanner = new Scanner(System.in); //imports a scanner to get the responses
+        double firstOperand; //first number
+        double secondOperand; //2nd number
+        double average = 0; //answer
+        double answer = 0.0;
+        double average1;
+        int counter = 0;
+        int selection = 0; //selection for switch to get which operation is wanted
+        boolean programLoop = true;
+        boolean menuLoop = true;
+
+        System.out.print("Current Result: " + answer + "");
+
+        while (programLoop)
+        {
+
+            if (menuLoop)
+            {
+
+                System.out.print("\n Menu \n --------------- \n 0. Exit Program \n 1. Addition \n 2. Subtraction \n 3. Multiplication \n 4. Division \n 5. Exponentiation \n 6. Logarithm \n 7. Display Average\n");
+                System.out.print("\n Enter Menu Selection:  ");
+                selection = myScanner.nextInt();
+            }
+            if (selection == 0)
+            {
+                System.out.print("Thanks for using this calculator. Goodbye!");
+                programLoop = false;
+            } else if (selection == 1)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = firstOperand + secondOperand; //addition
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 2)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = firstOperand - secondOperand; //subtraction
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 3)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = firstOperand * secondOperand; //multiplication
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 4)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = firstOperand / secondOperand; //division
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 5)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = pow(firstOperand, secondOperand);//exponents
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 6)
+            {
+                System.out.print("Enter first operand: "); //enters first number
+                firstOperand = myScanner.nextDouble();
+                System.out.print("Enter second operand: "); //enters 2nd number
+                secondOperand = myScanner.nextDouble();
+                answer = ((log10(secondOperand)) / (log10(firstOperand)));//logarithims
+                System.out.print("Current Result: " + answer + "");
+                average = average + answer;
+                counter = counter + 1;
+            } else if (selection == 7)
+            {
+                if (counter > 0)
+                {
+                    average1 = (average / counter);
+                    System.out.print("Sum of calculations: " + average + " \n Number of calculations: " + counter + " \n Average of calculations: " + average1 + "");//average statsitics
+                    menuLoop = false;
+                    continue;
+                } else if (counter == 0)
+                {
+                    System.out.print("Error: no calculations yet to average!");
+                    System.out.println("\n");
+                    System.out.print("Enter Menu Selection:  ");
+                    selection = myScanner.nextInt();
+                    menuLoop = false;
+                    continue;
+                }
+
+            }
+            if (selection > 7 || selection < 0)
+            {
+                System.out.print("Error Invalid Selection!");
+                System.out.println("\n");
+                System.out.print("Enter Menu Selection: ");
+                selection = myScanner.nextInt();
+                menuLoop = false;
+
+            }
+
+        }
+
+
+    }
+}
